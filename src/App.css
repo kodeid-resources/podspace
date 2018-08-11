@@ -1,28 +1,72 @@
-.App {
-  text-align: center;
+body {
+  background-color: #eee;
+}
+.wrapper {
+  widht: 95%;
+  margin: 1.5em auto;
+  padding-left: 1em;
+  padding-right: 4em;
+}
+.podcasts {
+  column-count: 2;
+  column-gap: 1.5em;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.podcast {
+  background-color: #fff;
+  display: inline-block;
+  margin: 0 0 1.5em;
+  width: 100%;
+  padding: 1.5em;
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.18);
+  border-radius: 3px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+img {
+  max-width: 90%;
+  height: auto;
+  display: flex;
 }
 
-.App-title {
-  font-size: 1.5em;
+h2 {
+  width: 100%;
+}
+.button {
+  display: flex;
+  text-decoration: none;
+  height: 3em;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  width: "100%";
+  border-radius: 2px;
+  background-color: #eee;
+  font-size: 1.0em;
+  border: 1px solid rgb(216, 216, 216);
+}
+.search-bar {
+  background-color: #fff;
+  padding: 1.5em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  width: 100%;
+}
+form {
+  display: flex;
+}
+input {
+  font-size: 1em;
+  border-radius: 0.3em;
+  border: 0;
+  background-color: #eee;
+  padding: 0.5em;
+  flex: 10;
+  margin-right: 0.5em;
+}
+button {
+  flex: 2;
+  border-radius: 2px;
+  background-color: #eee;
+  font-size: 1.0em;
 }
 
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
