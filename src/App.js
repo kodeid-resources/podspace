@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+
+import Podcast from './components/Podcast.js';
 import './App.css';
 
 class App extends Component {
@@ -37,22 +39,14 @@ PodSpace
         <div className="search-bar">
           <form>
             <input type="text" placeholder="Search for podcast" />
-            <button>
-Search
+            <button onClick={() => {}} type="button">
+              Search
             </button>
           </form>
         </div>
         <div className="podcasts">
           {this.state.podcasts.map(podcast => (
-            <div key={podcast.id} className="podcast">
-              <img alt={podcast.title} src={podcast.thumbnail} />
-              <h2>
-                {podcast.title}
-              </h2>
-              <a className="button">
-Listen
-              </a>
-            </div>
+            <Podcast podcast={podcast} />
           ))}
         </div>
       </div>
