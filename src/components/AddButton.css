@@ -11,3 +11,6 @@
   box-shadow: 1em 1em 2em #eee;
   font-size: 2em;
 }
+.floatButton {
+  display: inline-block;
+}

@@ -1,11 +1,11 @@
 import React from 'react';
 import './AddButton.css';
 
-const AddButton = props => (
-  <button type="button" className="float">
-    {' '}
-    +
-    {' '}
+const AddButton = ({ formVisibility, showForm }) => (
+  <button type="button" className="float" onClick={showForm}>
+    <span>
+      {formVisibility === false ? '+' : 'x'}
+    </span>
   </button>
 );
 

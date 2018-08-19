@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import Podcast from "./components/Podcast.js";
 import AddButton from "./components/AddButton.js";
+import NewPodcast from "./components/NewPodcast.js";
 import "./App.css";
 
 const isSearched = searchTerm => ({ title }) =>
@@ -12,6 +13,9 @@ class App extends Component {
     super();
     this.state = {
       searchTerm: "",
+      ui: {
+        formVisibility: false
+      },
       podcasts: [
         {
           id: 1,
@@ -44,12 +48,19 @@ class App extends Component {
       searchTerm: event.target.value
     });
   };
+  showForm = () => {
+    this.setState({
+      ui: {
+        formVisibility: !this.state.ui.formVisibility
+      }
+    });
+  };
 
   render() {
     return (
       <div className="wrapper">
         <h1>PodSpace</h1>
-        <div className="search-bar">
+        <div className="box search-bar">
           <form>
             <input
               type="text"
@@ -61,6 +72,7 @@ class App extends Component {
             </button>
           </form>
         </div>
+        <NewPodcast visible={this.state.ui.formVisibility} />
         <div className="podcasts">
           {this.state.podcasts
             .filter(isSearched(this.state.searchTerm))
@@ -68,7 +80,10 @@ class App extends Component {
               <Podcast key={podcast.id} podcast={podcast} />
             ))}
         </div>
-        <AddButton />
+        <AddButton
+          formVisibility={this.state.ui.formVisibility}
+          showForm={this.showForm}
+        />
       </div>
     );
   }
