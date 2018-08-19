@@ -3,6 +3,9 @@ import React, { Component } from "react";
 import Podcast from "./components/Podcast.js";
 import "./App.css";
 
+const isSearched = searchTerm => ({ title }) =>
+  title.toLowerCase().includes(searchTerm.toLowerCase());
+
 class App extends Component {
   constructor() {
     super();
@@ -58,9 +61,11 @@ class App extends Component {
           </form>
         </div>
         <div className="podcasts">
-          {this.state.podcasts.map(podcast => (
-            <Podcast podcast={podcast} />
-          ))}
+          {this.state.podcasts
+            .filter(isSearched(this.state.searchTerm))
+            .map(podcast => (
+              <Podcast key={podcast.id} podcast={podcast} />
+            ))}
         </div>
       </div>
     );
