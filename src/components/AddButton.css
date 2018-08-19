@@ -1,0 +1,13 @@
+.float {
+  position: fixed;
+  width: 2em;
+  height: 2em;
+  bottom: 1em;
+  right: 1em;
+  background-color: #0C9;
+  color: #fff;
+  border-radius: 2em;
+  text-align: center;
+  box-shadow: 1em 1em 2em #eee;
+  font-size: 2em;
+}

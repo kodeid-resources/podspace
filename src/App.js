@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import Podcast from "./components/Podcast.js";
+import AddButton from "./components/AddButton.js";
 import "./App.css";
 
 const isSearched = searchTerm => ({ title }) =>
@@ -67,6 +68,7 @@ class App extends Component {
               <Podcast key={podcast.id} podcast={podcast} />
             ))}
         </div>
+        <AddButton />
       </div>
     );
   }
