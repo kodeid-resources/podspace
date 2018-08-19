@@ -30,6 +30,10 @@ class App extends Component {
     };
   }
 
+  handleSearchButton() {
+    console.log('Searching...');
+  }
+
   render() {
     return (
       <div className="wrapper">
@@ -39,7 +43,7 @@ PodSpace
         <div className="search-bar">
           <form>
             <input type="text" placeholder="Search for podcast" />
-            <button onClick={() => {}} type="button">
+            <button onClick={this.handleSearchButton} type="button">
               Search
             </button>
           </form>
