@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import { css } from "emotion";
 
 import Podcast from "./components/Podcast.js";
 import AddButton from "./components/AddButton.js";
 import NewPodcast from "./components/NewPodcast.js";
-import "./App.css";
+
+import styles from "./styles.js";
 
 const isSearched = searchTerm => ({ title }) =>
   title.toLowerCase().includes(searchTerm.toLowerCase());
@@ -63,17 +65,31 @@ class App extends Component {
   };
 
   render() {
+    const stylingH1 = css({
+      fontSize: "3em",
+      color: "#0c9"
+    });
     return (
-      <div className="wrapper">
-        <h1>PodSpace</h1>
-        <div className="box search-bar">
-          <form>
+      <div className={styles.wrapper}>
+        <h1 className={stylingH1}>
+          <span role="img" aria-label="emoji">
+            🚀{" "}
+          </span>
+          PodSpace
+        </h1>
+        <div className={[styles.box]}>
+          <form className={styles.form}>
             <input
+              className={styles.input}
               type="text"
               placeholder="Search for podcast"
               onChange={this.handleSearchInput}
             />
-            <button onClick={this.handleSearchButton} type="button">
+            <button
+              className={styles.button}
+              onClick={this.handleSearchButton}
+              type="button"
+            >
               Search
             </button>
           </form>
@@ -82,7 +98,7 @@ class App extends Component {
           handleNewPodcast={this.handleNewPodcast}
           visible={this.state.ui.formVisibility}
         />
-        <div className="podcasts">
+        <div className={styles.podcasts}>
           {this.state.podcasts
             .filter(isSearched(this.state.searchTerm))
             .map(podcast => (

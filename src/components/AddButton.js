@@ -1,8 +1,9 @@
 import React from 'react';
-import './AddButton.css';
+
+import styles from '../styles.js';
 
 const AddButton = ({ formVisibility, showForm }) => (
-  <button type="button" className="float" onClick={showForm}>
+  <button type="button" className={styles.float} onClick={showForm}>
     <span>
       {formVisibility === false ? '+' : 'x'}
     </span>

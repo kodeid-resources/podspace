@@ -1,5 +1,7 @@
 import React from "react";
 
+import styles from "../styles.js";
+
 class NewPodcast extends React.Component {
   constructor(props) {
     super(props);
@@ -36,24 +38,28 @@ class NewPodcast extends React.Component {
     const { visible } = this.props;
     return (
       <div
-        className="box new-podcast"
+        className={styles.box}
         style={visible === true ? { display: "block" } : { display: "none" }}
       >
         <h3> New Podcast </h3>
-        <form onSubmit={this.handleSubmit}>
+        <form className={styles.form} onSubmit={this.handleSubmit}>
           <input
             type="text"
             placeholder="Title of the podcast"
             onChange={this.handleTitleChange}
             value={this.state.title}
+            className={styles.input}
           />
           <input
             type="text"
             placeholder="Thumbnail for image"
             onChange={this.handleThumbnailChange}
             value={this.state.thumbnail}
+            className={styles.input}
           />
-          <button type="submit">Save</button>
+          <button className={styles.button} type="submit">
+            Save
+          </button>
         </form>
       </div>
     );
