@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 import { css } from "emotion";
 
 import Podcast from "./components/Podcast.js";
@@ -18,27 +19,19 @@ class App extends Component {
       ui: {
         formVisibility: false
       },
-      podcasts: [
-        {
-          id: 1,
-          thumbnail:
-            "https://s3-us-west-2.amazonaws.com/anchor-generated-image-bank/production/podcast_uploaded_nologo400/405469/405469-1522117397083-c0592d270d967.jpg",
-          title: "Ceritanya Developer Podcast"
-        },
-        {
-          id: 2,
-          thumbnail:
-            "https://s3-us-west-2.amazonaws.com/anchor-generated-image-bank/production/podcast_uploaded400/89375/89375-1526983608105-f58a2aadf7bc1.jpg",
-          title: "Developer Muslim"
-        },
-        {
-          id: 3,
-          thumbnail:
-            "https://s3-us-west-2.amazonaws.com/anchor-generated-image-bank/production/podcast_uploaded_nologo400/814282/814282-1532652306173-4bb60a18c1dfb.jpg",
-          title: "Data Pods"
-        }
-      ]
+      podcasts: []
     };
+  }
+  getData = async () => {
+    const res = await axios.get(
+      "https://podspace-server-aeffazgssu.now.sh/podcasts"
+    );
+    this.setState({
+      podcasts: res.data
+    });
+  };
+  componentDidMount() {
+    this.getData();
   }
 
   handleSearchButton() {
@@ -57,11 +50,20 @@ class App extends Component {
       }
     });
   };
-  handleNewPodcast = newPodcast => {
-    this.setState({
-      podcasts: [...this.state.podcasts, newPodcast],
-      ui: { formVisibility: false }
-    });
+  handleNewPodcast = async newPodcast => {
+    try {
+      await axios.post(
+        "https://podspace-server-aeffazgssu.now.sh/podcasts",
+        newPodcast
+      );
+      this.setState({
+        podcasts: [...this.state.podcasts, newPodcast],
+        ui: { formVisibility: false }
+      });
+      this.getData();
+    } catch (error) {
+      console.error(`Something wrong with POSTing to the API: ${error}`);
+    }
   };
 
   render() {
