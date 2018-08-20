@@ -33,6 +33,9 @@ class App extends Component {
   componentDidMount() {
     this.getData();
   }
+  componentDidCatch() {
+    console.error("Error nih!");
+  }
 
   handleSearchButton() {
     console.log("Searching...");
