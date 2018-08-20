@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { css } from "emotion";
+import { BrowserRouter, Route, Link } from "react-router-dom";
 
 import Podcast from "./components/Podcast.js";
 import AddButton from "./components/AddButton.js";
@@ -82,6 +83,24 @@ class App extends Component {
           </span>
           PodSpace
         </h1>
+        <div className={styles.box}>
+          <BrowserRouter>
+            <div>
+              <ul>
+                <li>
+                  <Link to="/about">About</Link>
+                </li>
+                <li>
+                  <Link to="/subscribe">Subscribe</Link>
+                </li>
+                <li>
+                  <Link to="/contact">Contact</Link>
+                </li>
+              </ul>
+              <Route path="/about" component={() => <h2>About</h2>} />
+            </div>
+          </BrowserRouter>
+        </div>
         <div className={styles.box}>
           <form className={styles.form}>
             <input
