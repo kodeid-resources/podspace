@@ -82,7 +82,7 @@ class App extends Component {
           </span>
           PodSpace
         </h1>
-        <div className={[styles.box]}>
+        <div className={styles.box}>
           <form className={styles.form}>
             <input
               className={styles.input}
@@ -91,7 +91,7 @@ class App extends Component {
               onChange={this.handleSearchInput}
             />
             <button
-              className={styles.button}
+              className={styles.searchButton}
               onClick={this.handleSearchButton}
               type="button"
             >
