@@ -43,6 +43,19 @@ const styles = {
     font-size: 1em;
     border: 1px solid rgb(216, 216, 216);
   `,
+  searchButton: css`
+    display: flex;
+    text-decoration: none;
+    height: 3em;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    width: 10%;
+    border-radius: 2px;
+    background-color: #eee;
+    font-size: 1em;
+    border: 1px solid rgb(216, 216, 216);
+  `,
   box: css`
     background-color: #fff;
     padding: 1.5em;
