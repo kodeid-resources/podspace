@@ -22,13 +22,16 @@ class App extends Component {
       podcasts: []
     };
   }
-  async componentDidMount() {
+  getData = async () => {
     const res = await axios.get(
       "https://podspace-server-aeffazgssu.now.sh/podcasts"
     );
     this.setState({
       podcasts: res.data
     });
+  };
+  componentDidMount() {
+    this.getData();
   }
 
   handleSearchButton() {
@@ -47,11 +50,20 @@ class App extends Component {
       }
     });
   };
-  handleNewPodcast = newPodcast => {
-    this.setState({
-      podcasts: [...this.state.podcasts, newPodcast],
-      ui: { formVisibility: false }
-    });
+  handleNewPodcast = async newPodcast => {
+    try {
+      await axios.post(
+        "https://podspace-server-aeffazgssu.now.sh/podcasts",
+        newPodcast
+      );
+      this.setState({
+        podcasts: [...this.state.podcasts, newPodcast],
+        ui: { formVisibility: false }
+      });
+      this.getData();
+    } catch (error) {
+      console.error(`Something wrong with POSTing to the API: ${error}`);
+    }
   };
 
   render() {
