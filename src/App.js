@@ -55,6 +55,12 @@ class App extends Component {
       }
     });
   };
+  handleNewPodcast = newPodcast => {
+    this.setState({
+      podcasts: [...this.state.podcasts, newPodcast],
+      ui: { formVisibility: false }
+    });
+  };
 
   render() {
     return (
@@ -72,7 +78,10 @@ class App extends Component {
             </button>
           </form>
         </div>
-        <NewPodcast visible={this.state.ui.formVisibility} />
+        <NewPodcast
+          handleNewPodcast={this.handleNewPodcast}
+          visible={this.state.ui.formVisibility}
+        />
         <div className="podcasts">
           {this.state.podcasts
             .filter(isSearched(this.state.searchTerm))
