@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { css } from "emotion";
-import { Link } from "react-router-dom";
 
 import Podcast from "./components/Podcast.js";
 import AddButton from "./components/AddButton.js";

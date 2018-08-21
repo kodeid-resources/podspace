@@ -12,6 +12,20 @@ const About = () => (
       <h2>
 About
       </h2>
+      <p>
+        PodSpace adalah sebuah portal yang berisi direktori podcast keren
+        berbahasa Indonesia. Buat teman-teman yang memiliki podcast dan belum
+        terdaftar di PodSpace, silakan daftarkan segera. Gratis kok
+        {' '}
+        <span role="img" aria-label="emoji">
+          😃
+        </span>
+        .
+      </p>
+      <hr />
+      <span role="img" aria-label="emoji">
+        🚀🚀🚀
+      </span>
     </div>
   </div>
 );

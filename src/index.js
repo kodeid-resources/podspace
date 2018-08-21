@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import App from './App.js';
 import About from './About.js';
+import Subscribe from './Subscribe.js';
 
-import styles from './styles.js';
 // import registerServiceWorker from './registerServiceWorker';
 
 const RootApp = () => (
@@ -13,6 +13,7 @@ const RootApp = () => (
     <div>
       <Route exact path="/" component={App} />
       <Route path="/about" component={About} />
+      <Route path="/subscribe" component={Subscribe} />
     </div>
   </BrowserRouter>
 );
