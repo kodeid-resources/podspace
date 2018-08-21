@@ -20,6 +20,11 @@ About
 Subscribe
         </Link>
       </li>
+      <li className={styles.menu}>
+        <Link to="/contact">
+Contact
+        </Link>
+      </li>
     </ul>
   </div>
 );
