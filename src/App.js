@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { css } from "emotion";
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import Podcast from "./components/Podcast.js";
 import AddButton from "./components/AddButton.js";
 import NewPodcast from "./components/NewPodcast.js";
+import Header from "./components/Header.js";
+import Menu from "./components/Menu.js";
+import SearchBox from "./components/SearchBox.js";
 
 import styles from "./styles.js";
 
@@ -71,63 +74,30 @@ class App extends Component {
   };
 
   render() {
-    const stylingH1 = css({
-      fontSize: "3em",
-      color: "#0c9"
-    });
     return (
       <div className={styles.wrapper}>
-        <h1 className={stylingH1}>
-          <span role="img" aria-label="emoji">
-            🚀{" "}
-          </span>
-          PodSpace
-        </h1>
-        <div className={styles.box}>
-          <BrowserRouter>
-            <div>
-              <ul>
-                <li>
-                  <Link to="/about">About</Link>
-                </li>
-                <li>
-                  <Link to="/subscribe">Subscribe</Link>
-                </li>
-                <li>
-                  <Link to="/contact">Contact</Link>
-                </li>
-              </ul>
-              <Route path="/about" component={() => <h2>About</h2>} />
-            </div>
-          </BrowserRouter>
-        </div>
-        <div className={styles.box}>
-          <form className={styles.form}>
-            <input
-              className={styles.input}
-              type="text"
-              placeholder="Search for podcast"
-              onChange={this.handleSearchInput}
-            />
-            <button
-              className={styles.searchButton}
-              onClick={this.handleSearchButton}
-              type="button"
-            >
-              Search
-            </button>
-          </form>
-        </div>
+        <Header />
+        <Menu />
+        <SearchBox />
         <NewPodcast
           handleNewPodcast={this.handleNewPodcast}
           visible={this.state.ui.formVisibility}
         />
         <div className={styles.podcasts}>
-          {this.state.podcasts
-            .filter(isSearched(this.state.searchTerm))
-            .map(podcast => (
-              <Podcast key={podcast.id} podcast={podcast} />
-            ))}
+          {this.state.podcasts.length > 0 ? (
+            this.state.podcasts
+              .filter(isSearched(this.state.searchTerm))
+              .map(podcast => <Podcast key={podcast.id} podcast={podcast} />)
+          ) : (
+            <div className={styles.box}>
+              <h3>
+                <span role="img" aria-label="emoji">
+                  🚶‍♂️🚶‍♂️🚶‍♂️{" "}
+                </span>
+                Loading...
+              </h3>
+            </div>
+          )}
         </div>
         <AddButton
           formVisibility={this.state.ui.formVisibility}
