@@ -91,6 +91,13 @@ const styles = {
     font-size: 2em;
     display: inline-block;
   `,
+  menus: css`
+    list-style: none;
+  `,
+  menu: css`
+    display: inline;
+    margin-right: 1em;
+  `,
 };
 
 export default styles;

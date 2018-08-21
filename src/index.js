@@ -1,8 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import { BrowserRouter, Route } from 'react-router-dom';
+import App from './App.js';
+import About from './About.js';
+import Subscribe from './Subscribe.js';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+// import registerServiceWorker from './registerServiceWorker';
+
+const RootApp = () => (
+  <BrowserRouter>
+    <div>
+      <Route exact path="/" component={App} />
+      <Route path="/about" component={About} />
+      <Route path="/subscribe" component={Subscribe} />
+    </div>
+  </BrowserRouter>
+);
+
+ReactDOM.render(<RootApp />, document.getElementById('root'));
+// registerServiceWorker();
