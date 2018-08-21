@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 import App from './App.js';
 import About from './About.js';
 import Subscribe from './Subscribe.js';
@@ -14,6 +14,7 @@ const RootApp = () => (
       <Route exact path="/" component={App} />
       <Route path="/about" component={About} />
       <Route path="/subscribe" component={Subscribe} />
+      <Route path="/contact" component={() => <Redirect to="/about" />} />
     </div>
   </BrowserRouter>
 );
