@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import Total from "./Total.js";
+import Total from './Total.js';
 
-const Cart = props => (
+const Cart = () => (
   <div>
     <h2>Commerce Cart</h2>
     <Total />
