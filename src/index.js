@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import {
-  BrowserRouter, Switch, Route, Redirect,
-} from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import App from './App.js';
 import About from './About.js';
 import Subscribe from './Subscribe.js';

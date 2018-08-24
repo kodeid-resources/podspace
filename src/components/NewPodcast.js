@@ -1,23 +1,24 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import styles from "../styles.js";
+import styles from '../styles.js';
 
 class NewPodcast extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: "",
-      thumbnail: ""
+      title: '',
+      thumbnail: '',
     };
   }
   handleTitleChange = ({ target: { value } }) => {
     this.setState({
-      title: value
+      title: value,
     });
   };
   handleThumbnailChange = ({ target: { value } }) => {
     this.setState({
-      thumbnail: value
+      thumbnail: value,
     });
   };
   handleSubmit = event => {
@@ -25,11 +26,11 @@ class NewPodcast extends React.Component {
     const newPodcast = {
       id: this.state.title.charCodeAt(0),
       title: this.state.title,
-      thumbnail: this.state.thumbnail
+      thumbnail: this.state.thumbnail,
     };
     this.setState({
-      title: "",
-      thumbnail: ""
+      title: '',
+      thumbnail: '',
     });
     this.props.handleNewPodcast(newPodcast);
   };
@@ -39,7 +40,7 @@ class NewPodcast extends React.Component {
     return (
       <div
         className={styles.box}
-        style={visible === true ? { display: "block" } : { display: "none" }}
+        style={visible === true ? { display: 'block' } : { display: 'none' }}
       >
         <h3> New Podcast </h3>
         <form className={styles.form} onSubmit={this.handleSubmit}>
@@ -65,5 +66,14 @@ class NewPodcast extends React.Component {
     );
   }
 }
+
+NewPodcast.propTypes = {
+  handleNewPodcast: PropTypes.func.isRequired,
+  visible: PropTypes.bool,
+};
+
+NewPodcast.defaultProps = {
+  visible: false,
+};
 
 export default NewPodcast;

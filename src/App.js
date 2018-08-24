@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import axios from "axios";
+import React, { Component } from 'react';
+import axios from 'axios';
 
-import Podcast from "./components/Podcast.js";
-import AddButton from "./components/AddButton.js";
-import NewPodcast from "./components/NewPodcast.js";
-import Header from "./components/Header.js";
-import Menu from "./components/Menu.js";
-import SearchBox from "./components/SearchBox.js";
+import Podcast from './components/Podcast.js';
+import AddButton from './components/AddButton.js';
+import NewPodcast from './components/NewPodcast.js';
+import Header from './components/Header.js';
+import Menu from './components/Menu.js';
+import SearchBox from './components/SearchBox.js';
 
-import styles from "./styles.js";
+import styles from './styles.js';
 
 const isSearched = searchTerm => ({ title }) =>
   title.toLowerCase().includes(searchTerm.toLowerCase());
@@ -17,53 +17,53 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      searchTerm: "",
+      searchTerm: '',
       ui: {
-        formVisibility: false
+        formVisibility: false,
       },
-      podcasts: []
+      podcasts: [],
     };
   }
   getData = async () => {
     const res = await axios.get(
-      "https://podspace-server-aeffazgssu.now.sh/podcasts"
+      'https://podspace-server-aeffazgssu.now.sh/podcasts',
     );
     this.setState({
-      podcasts: res.data
+      podcasts: res.data,
     });
   };
   componentDidMount() {
     this.getData();
   }
   componentDidCatch() {
-    console.error("Error nih!");
+    console.error('Error nih!');
   }
 
   handleSearchButton() {
-    console.log("Searching...");
+    console.log('Searching...');
   }
 
   handleSearchInput = event => {
     this.setState({
-      searchTerm: event.target.value
+      searchTerm: event.target.value,
     });
   };
   showForm = () => {
     this.setState({
       ui: {
-        formVisibility: !this.state.ui.formVisibility
-      }
+        formVisibility: !this.state.ui.formVisibility,
+      },
     });
   };
   handleNewPodcast = async newPodcast => {
     try {
       await axios.post(
-        "https://podspace-server-aeffazgssu.now.sh/podcasts",
-        newPodcast
+        'https://podspace-server-aeffazgssu.now.sh/podcasts',
+        newPodcast,
       );
       this.setState({
         podcasts: [...this.state.podcasts, newPodcast],
-        ui: { formVisibility: false }
+        ui: { formVisibility: false },
       });
       this.getData();
     } catch (error) {
@@ -90,7 +90,7 @@ class App extends Component {
             <div className={styles.box}>
               <h3>
                 <span role="img" aria-label="emoji">
-                  🚶‍♂️🚶‍♂️🚶‍♂️{" "}
+                  🚶‍♂️🚶‍♂️🚶‍♂️{' '}
                 </span>
                 Loading...
               </h3>
