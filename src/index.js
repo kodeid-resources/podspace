@@ -1,13 +1,14 @@
+/* global: document */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import {
+  BrowserRouter, Switch, Route, Redirect,
+} from 'react-router-dom';
 import App from './App.js';
 import About from './About.js';
 import Subscribe from './Subscribe.js';
 import NoMatch from './NoMatch.js';
-
-// import registerServiceWorker from './registerServiceWorker';
 
 const RootApp = () => (
   <BrowserRouter>
@@ -22,4 +23,3 @@ const RootApp = () => (
 );
 
 ReactDOM.render(<RootApp />, document.getElementById('root'));
-// registerServiceWorker();

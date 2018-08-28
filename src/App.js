@@ -10,8 +10,7 @@ import SearchBox from './components/SearchBox.js';
 
 import styles from './styles.js';
 
-const isSearched = searchTerm => ({ title }) =>
-  title.toLowerCase().includes(searchTerm.toLowerCase());
+const isSearched = searchTerm => ({ title }) => title.toLowerCase().includes(searchTerm.toLowerCase());
 
 class App extends Component {
   constructor() {
@@ -24,6 +23,7 @@ class App extends Component {
       podcasts: [],
     };
   }
+
   getData = async () => {
     const res = await axios.get(
       'https://podspace-server-aeffazgssu.now.sh/podcasts',
@@ -32,9 +32,11 @@ class App extends Component {
       podcasts: res.data,
     });
   };
+
   componentDidMount() {
     this.getData();
   }
+
   componentDidCatch() {
     console.error('Error nih!');
   }
@@ -43,11 +45,12 @@ class App extends Component {
     console.log('Searching...');
   }
 
-  handleSearchInput = event => {
+  handleSearchInput = (event) => {
     this.setState({
       searchTerm: event.target.value,
     });
   };
+
   showForm = () => {
     this.setState({
       ui: {
@@ -55,7 +58,8 @@ class App extends Component {
       },
     });
   };
-  handleNewPodcast = async newPodcast => {
+
+  handleNewPodcast = async (newPodcast) => {
     try {
       await axios.post(
         'https://podspace-server-aeffazgssu.now.sh/podcasts',
@@ -90,7 +94,8 @@ class App extends Component {
             <div className={styles.box}>
               <h3>
                 <span role="img" aria-label="emoji">
-                  🚶‍♂️🚶‍♂️🚶‍♂️{' '}
+                  🚶‍♂️🚶‍♂️🚶‍♂️
+                  {' '}
                 </span>
                 Loading...
               </h3>

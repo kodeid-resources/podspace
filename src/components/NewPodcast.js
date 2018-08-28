@@ -11,17 +11,20 @@ class NewPodcast extends React.Component {
       thumbnail: '',
     };
   }
+
   handleTitleChange = ({ target: { value } }) => {
     this.setState({
       title: value,
     });
   };
+
   handleThumbnailChange = ({ target: { value } }) => {
     this.setState({
       thumbnail: value,
     });
   };
-  handleSubmit = event => {
+
+  handleSubmit = (event) => {
     event.preventDefault();
     const newPodcast = {
       id: this.state.title.charCodeAt(0),

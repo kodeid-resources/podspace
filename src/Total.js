@@ -11,7 +11,8 @@ const Total = props => (
     </h3>
     <h4>
       Discount:
-      {calculateDiscount(props.numberOfItems)}%
+      {calculateDiscount(props.numberOfItems)}
+%
     </h4>
   </div>
 );
